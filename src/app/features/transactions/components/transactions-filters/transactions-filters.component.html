@@ -13,16 +13,18 @@
 
   <mat-form-field class="w-full" (click)="picker.open()">
     <mat-label>Created at</mat-label>
-    <mat-date-range-input [rangePicker]="picker" [disabled]="isLoading()">
+    <mat-date-range-input [rangePicker]="picker" [disabled]="isLoading()" [max]="today">
       <input
         matStartDate
         formControlName="createdAtStart"
         placeholder="MM/DD/YYYY"
+        readonly
       />
       <input
         matEndDate
         formControlName="createdAtEnd"
         placeholder="MM/DD/YYYY"
+        readonly
       />
     </mat-date-range-input>
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>

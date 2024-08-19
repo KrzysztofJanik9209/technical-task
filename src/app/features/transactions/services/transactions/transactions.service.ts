@@ -63,6 +63,7 @@ export class TransactionsService {
           this._transactions.set(transactions.items);
 
           if (!transactions.items?.length) {
+            this.resetPaginatorProperties();
             return [];
           }
 
@@ -72,6 +73,7 @@ export class TransactionsService {
         }),
         catchError(() => {
           this._isLoading.set(false);
+          this.resetPaginatorProperties();
           this._notificationsService.showMessage(
             'Failed to load transactions. Please try again later.',
           );
@@ -96,5 +98,10 @@ export class TransactionsService {
     queryParams: PaymentTransactionsQueryParamsDto,
   ): Observable<ResponseApi<PaymentTransaction>> {
     return this._transactionsHttp.getTransactions(queryParams);
+  }
+
+  private resetPaginatorProperties(): void {
+    this._currentPage.set(0);
+    this._resultsLength.set(0);
   }
 }

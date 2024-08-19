@@ -33,6 +33,7 @@ export class TransactionsFiltersComponent implements OnInit {
 
   public formGroup: FormGroup;
   public isLoading: Signal<boolean> = this._transactionsService.isLoading;
+  public today = new Date();
 
   public readonly statusLabels = Object.values(
     PaymentTransactionStatusEnum,
