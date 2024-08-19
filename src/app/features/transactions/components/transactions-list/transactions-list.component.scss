@@ -1,0 +1,43 @@
+.table-container {
+  position: relative;
+  min-height: 316px;
+  overflow: auto;
+  background: #fff;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+.loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mat-mdc-cell {
+  min-width: 100px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.mat-mdc-table-sticky-border-elem-left {
+  border-right: 1px solid #e0e0e0;
+}
+
+.mat-column-createdAt {
+  min-width: 120px;
+}
+
+.mat-column-description {
+  min-width: 240px;
+}
+
+.mat-column-id {
+  min-width: 200px;
+}

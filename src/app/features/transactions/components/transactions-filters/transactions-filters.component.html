@@ -1,0 +1,34 @@
+<form [formGroup]="formGroup">
+  <mat-form-field class="w-full">
+    <mat-label>Status</mat-label>
+
+    <mat-select formControlName="status" placeholder="Select status" [disabled]="isLoading()">
+      <mat-option [value]="null"> - </mat-option>
+
+      @for (status of statusLabels; track status) {
+        <mat-option [value]="status.value">{{ status.label }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="w-full" (click)="picker.open()">
+    <mat-label>Created at</mat-label>
+    <mat-date-range-input [rangePicker]="picker" [disabled]="isLoading()">
+      <input
+        matStartDate
+        formControlName="createdAtStart"
+        placeholder="MM/DD/YYYY"
+      />
+      <input
+        matEndDate
+        formControlName="createdAtEnd"
+        placeholder="MM/DD/YYYY"
+      />
+    </mat-date-range-input>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker></mat-date-range-picker>
+  </mat-form-field>
+
+  <button mat-flat-button (click)="onSubmitFilters()" [disabled]="isLoading()" class="mr-3">Apply filters</button>
+  <button mat-stroked-button (click)="onClearFilters()" [disabled]="isLoading()">Clear filters</button>
+</form>
